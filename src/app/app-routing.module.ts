@@ -8,9 +8,10 @@ import { AppHomeComponent } from './app-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'home', redirectTo: '/' },
+  { path: 'home', component: AppHomeComponent },
   { path: 'api', component: AppApiComponent},
-  { path: 'blogs', component: AppBlogsComponent }
+  { path: 'blogs', component: AppBlogsComponent },
+  { path: '**', component: AppHomeComponent}
 ];
 
 @NgModule({

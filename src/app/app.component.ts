@@ -2,6 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<app-home></app-home>` 
+  template: `<div id="rcorners2">
+            <img width=200 height=50 src="/assets/images/azure-aspnet4you.png" />
+              <nav>
+                <a routerLink="/home" routerLinkActive="active">Home</a>
+                <a routerLink="/api" routerLinkActive="active">Api</a>
+                <a routerLink="/blogs" routerLinkActive="active">Blogs</a>
+              </nav>
+            <router-outlet>
+             
+           </router-outlet>
+          </div>` 
 })
 export class AppComponent { }

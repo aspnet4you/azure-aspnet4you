@@ -1,18 +1,35 @@
   <p>
-    <h2>Angular4 Address List</h2>
+    <h2>Prodip's Angular4 Address List</h2>
     <table>
       <thead>
-        <tr>
+        <tr col>
           <th>Name</th>
           <th>Phone</th>
           <th>City</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let address of addresses">
+        <tr *ngFor="let address of addresses" (click)="selectAddress(address)">
           <td>{{address.name}}</td>
           <td>{{address.phone}}</td>
           <td>{{address.city}}</td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="selectedAddress">
+      <hr>
+      <h3>{{selectedAddress.name}}'s Address Detail</h3>
+      <div class="form-group">
+        <Label width="100">Name:</Label>
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.name">
+      </div>
+      <div class="form-group">
+        <Label width="100">Phone:</Label>
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.phone">
+      </div>
+      <div class="form-group">
+        <Label width="100">City:</Label>
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.city">
+      </div>
+    </div>
+    
