@@ -2,7 +2,8 @@
     <h2>Prodip's Angular4 Address List</h2>
     <table>
       <thead>
-        <tr col>
+        <tr>
+          <th>Id</th>
           <th>Name</th>
           <th>Phone</th>
           <th>City</th>
@@ -10,26 +11,30 @@
       </thead>
       <tbody>
         <tr *ngFor="let address of addresses" (click)="selectAddress(address)">
-          <td>{{address.name}}</td>
-          <td>{{address.phone}}</td>
-          <td>{{address.city}}</td>
+          <td>{{address.Id}}</td>
+          <td>{{address.Name}}</td>
+          <td>{{address.Phone}}</td>
+          <td>{{address.City}}</td>
         </tr>
       </tbody>
     </table>
     <div *ngIf="selectedAddress">
       <hr>
-      <h3>{{selectedAddress.name}}'s Address Detail</h3>
+      <h3>{{selectedAddress.Name}}'s Address Detail</h3>
+      <div class="form-group">
+        <Label width="100">Id: {{selectedAddress.Id}}</Label>
+      </div>
       <div class="form-group">
         <Label width="100">Name:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.name">
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.Name">
       </div>
       <div class="form-group">
         <Label width="100">Phone:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.phone">
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.Phone">
       </div>
       <div class="form-group">
         <Label width="100">City:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.city">
+        <input type="text" class="form-control" [(ngModel)]="selectedAddress.City">
       </div>
     </div>
     
