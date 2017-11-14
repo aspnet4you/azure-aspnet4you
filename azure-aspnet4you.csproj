@@ -66,9 +66,7 @@
     <Content Include="src\app\app-home.component.html" />
     <Content Include="src\app\app-blogs.component.html" />
     <Content Include="src\app\app-api.component.html" />
-    <Content Include="src\app\hero-detail.component.html" />
     <Content Include="src\app\address-list.component.html" />
-    <Content Include="src\app\hero-list.component.html" />
     <Content Include="src\assets\images\azure-aspnet4you.png" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
@@ -105,16 +103,7 @@
     <TypeScriptCompile Include="src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\backend.service.ts" />
-    <TypeScriptCompile Include="src\app\hero-detail.component.ts" />
-    <TypeScriptCompile Include="src\app\hero-list.component.ts" />
-    <TypeScriptCompile Include="src\app\hero.service.ts" />
-    <TypeScriptCompile Include="src\app\hero.ts" />
-    <TypeScriptCompile Include="src\app\logger.service.ts" />
     <TypeScriptCompile Include="src\app\mini-app.ts" />
-    <TypeScriptCompile Include="src\app\sales-tax.component.ts" />
-    <TypeScriptCompile Include="src\app\sales-tax.service.ts" />
-    <TypeScriptCompile Include="src\app\tax-rate.service.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />

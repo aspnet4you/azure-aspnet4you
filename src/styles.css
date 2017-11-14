@@ -74,7 +74,7 @@ nav a.active {
 
 .form-control {
   display: block;
-  width: 25%;
+  width: 150px;
   height: 20px;
   padding: 6px 12px;
   font-size: 14px;

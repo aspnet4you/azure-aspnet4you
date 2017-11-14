@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { Address } from './address';
 import { AddressBookService } from './address-book.service';
 
@@ -16,8 +16,15 @@ export class AddressBookComponent implements OnInit {
   constructor(private service: AddressBookService) { }
 
   ngOnInit() {
-    this.addresses = this.service.getAddresses();
+    this.service.getAddresses()
+      .subscribe(
+      addrs => this.addresses = addrs, //Bind to view
+      err => {
+        // Log errors if any
+        console.log(err);
+      });
   }
 
+  // Need for events
   selectAddress(address: Address) { this.selectedAddress = address; }
 }

@@ -3,12 +3,6 @@ import { FormsModule }         from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroListComponent }   from './hero-list.component';
-import { SalesTaxComponent }   from './sales-tax.component';
-import { HeroService }         from './hero.service';
-import { BackendService }      from './backend.service';
-import { Logger } from './logger.service';
 import { AddressBookComponent } from './address-book.component';
 import { AddressBookService } from './address-book.service';
 import { AppApiComponent } from './app-api.component';
@@ -25,19 +19,13 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   declarations: [
     AppComponent,
-    HeroDetailComponent,
-    HeroListComponent,
-    SalesTaxComponent,
     AddressBookComponent,
     AppHomeComponent,
     AppApiComponent,
     AppBlogsComponent
   ],
   providers: [
-    BackendService,
-    HeroService,
-    AddressBookService,
-    Logger
+    AddressBookService
   ],
   bootstrap: [ AppComponent ]
 })

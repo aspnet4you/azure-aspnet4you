@@ -1,40 +1,49 @@
   <p>
     <h2>Prodip's Angular4 Address List</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>City</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let address of addresses" (click)="selectAddress(address)">
-          <td>{{address.Id}}</td>
-          <td>{{address.Name}}</td>
-          <td>{{address.Phone}}</td>
-          <td>{{address.City}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div *ngIf="selectedAddress">
-      <hr>
-      <h3>{{selectedAddress.Name}}'s Address Detail</h3>
-      <div class="form-group">
-        <Label width="100">Id: {{selectedAddress.Id}}</Label>
-      </div>
-      <div class="form-group">
-        <Label width="100">Name:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.Name">
-      </div>
-      <div class="form-group">
-        <Label width="100">Phone:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.Phone">
-      </div>
-      <div class="form-group">
-        <Label width="100">City:</Label>
-        <input type="text" class="form-control" [(ngModel)]="selectedAddress.City">
+    <div style="width: 100%; display: table;">
+      <div style="display: table-row">
+        <div style="width: 400px; display: table-cell;">
+          <table *ngIf="addresses">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let address of addresses" (click)="selectAddress(address)">
+                <td>{{address.Id}}</td>
+                <td>{{address.Name}}</td>
+                <td>{{address.Phone}}</td>
+                <td>{{address.City}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display: table-cell;">
+          <div *ngIf="selectedAddress">
+            <h3>{{selectedAddress.Name}}'s Address Detail</h3>
+            <div class="form-group">
+              <Label width="100">Id: {{selectedAddress.Id}}</Label>
+            </div>
+            <div class="form-group">
+              <Label width="100">Name:</Label>
+              <input type="text" class="form-control" [(ngModel)]="selectedAddress.Name">
+            </div>
+            <div class="form-group">
+              <Label width="100">Phone:</Label>
+              <input type="text" class="form-control" [(ngModel)]="selectedAddress.Phone">
+            </div>
+            <div class="form-group">
+              <Label width="100">City:</Label>
+              <input type="text" class="form-control" [(ngModel)]="selectedAddress.City">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    
+   
     
