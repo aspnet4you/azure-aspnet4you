@@ -2,7 +2,7 @@
     <h2>Prodip's Angular4 Address List</h2>
     <div style="width: 100%; display: table;">
       <div style="display: table-row">
-        <div style="width: 400px; display: table-cell;">
+        <div style="width: 350px; display: table-cell;">
           <table *ngIf="addresses">
             <thead>
               <tr>
@@ -22,6 +22,7 @@
             </tbody>
           </table>
         </div>
+        &nbsp;
         <div style="display: table-cell;">
           <div *ngIf="selectedAddress">
             <h3>{{selectedAddress.Name}}'s Address Detail</h3>
