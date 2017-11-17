@@ -86,6 +86,13 @@
     <Content Include="tslint.json" />
     <None Include="Properties\PublishProfiles\aspnet4you - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\aspnet4you - Web Deploy.pubxml" />
+    <Content Include="src\Web.config" />
+    <None Include="src\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="src\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
