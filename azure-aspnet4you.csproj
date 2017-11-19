@@ -67,7 +67,9 @@
     <Content Include="src\app\app-blogs.component.html" />
     <Content Include="src\app\app-api.component.html" />
     <Content Include="src\app\address-list.component.html" />
+    <Content Include="src\assets\images\api-aspnet4you.PNG" />
     <Content Include="src\assets\images\azure-aspnet4you.png" />
+    <Content Include="src\assets\images\blogs-aspnet4you.PNG" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.css" />
