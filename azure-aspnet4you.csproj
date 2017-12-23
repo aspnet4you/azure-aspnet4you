@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
+    <Content Include="src\app\oauth-login.component.html" />
     <Content Include="src\app\app-home.component.html" />
     <Content Include="src\app\app-blogs.component.html" />
     <Content Include="src\app\app-api.component.html" />
@@ -70,6 +71,12 @@
     <Content Include="src\assets\images\api-aspnet4you.PNG" />
     <Content Include="src\assets\images\azure-aspnet4you.png" />
     <Content Include="src\assets\images\blogs-aspnet4you.PNG" />
+    <Content Include="src\assets\images\Sign-in-Large---Active.png" />
+    <Content Include="src\assets\images\Sign-in-Large---Default.png" />
+    <Content Include="src\assets\images\Sign-in-Large---Hover.png" />
+    <Content Include="src\assets\images\Sign-in-Small---Active.png" />
+    <Content Include="src\assets\images\Sign-in-Small---Default.png" />
+    <Content Include="src\assets\images\Sign-in-Small---Hover.png" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.css" />
@@ -101,9 +108,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\address-book-protected.component.ts" />
+    <TypeScriptCompile Include="src\app\oauth-login.service.ts" />
+    <TypeScriptCompile Include="src\app\jwt-token.ts" />
     <TypeScriptCompile Include="src\app\address-book.component.ts" />
     <TypeScriptCompile Include="src\app\address-book.service.ts" />
     <TypeScriptCompile Include="src\app\address.ts" />
+    <TypeScriptCompile Include="src\app\oauth-login.component.ts" />
     <TypeScriptCompile Include="src\app\app-home.component.ts" />
     <TypeScriptCompile Include="src\app\app-blogs.component.ts" />
     <TypeScriptCompile Include="src\app\app-api.component.ts" />

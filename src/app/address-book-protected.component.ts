@@ -4,20 +4,20 @@ import { Address } from './address';
 import { AddressBookService } from './address-book.service';
 
 @Component({
-  selector: 'app-address-list',
+  selector: 'app-address-list-protected',
   templateUrl: './address-list.component.html',
   providers: [AddressBookService]
 })
 
-export class AddressBookComponent implements OnInit {
+export class ProtectedAddressBookComponent implements OnInit {
   addresses: Address[];
   selectedAddress: Address;
-  title: string = "Prodip's Angular AddressBook";
+  title: string = "Prodip's Protected (by Jwt oAuth Token) Angular AddressBook";
 
   constructor(private service: AddressBookService) { }
 
   ngOnInit() {
-    this.service.getAddresses(false)
+    this.service.getAddresses(true)
       .subscribe(
       addrs => this.addresses = addrs, //Bind to view
       err => {

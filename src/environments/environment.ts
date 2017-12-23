@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiDomain: "http://api-local.aspnet4you.com",
+  returnUrl: "http://localhost:4200/oauth",
+  cookieDomain: "localhost",
+  secureCookie: false
 };

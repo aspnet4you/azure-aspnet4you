@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Address } from './address';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 import { Observable } from 'rxjs/Rx';
-// Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { CookieService } from 'ngx-cookie-service';
 
 const Addresses = [
   { name: "John", phone: "214-555-1212", city: "Dallas" },
@@ -21,34 +22,81 @@ var Addresses2: Address[];
 
 @Injectable()
 export class AddressBookService {
-  
-  // Resolve HTTP using the constructor
-  constructor(private http: HttpClient) {
+
+  errorMsg: string;
+  successMsg: string;
+  static goodMsg: string = "Successfully retrieved addresses.";
+  static badMsg: string = "Server error: Something went wrong, can not get the data. May be you have not logged in! Look at the console for details."; 
+
+  constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
-  private baseAddressBookUrl = 'http://api.aspnet4you.com/api/addressbook/';
+  private baseAddressBookUrl = environment.apiDomain + '/api/addressbook/';
 
-  getAddresses(): Observable<Address[]>{
+  getAddresses(isProtected: boolean = false): Observable<Address[]>{
     // set the headers required to pass CORS. Don't forget to add the origins at the api (server)!
+    var token = this.cookieService.get("access_token");
     let headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
       .append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-      .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+      .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization')
+      .append('Access-Control-Allow-Credentials', 'true');
 
-    return this.http.get(this.baseAddressBookUrl +'GetAllAddresses', { headers})
-      .map((data: any) => data)
+    if (token != "undefined" &&token !="" && token != null) {
+      headers = headers.append('Authorization', 'Bearer ' +token);
+    }
+
+    let actionName = "GetAllAddresses";
+    if (isProtected) {
+      actionName = "GetProtectedAddresses";
+    }
+
+    return this.http.get(this.baseAddressBookUrl + actionName, { headers})
+      .map((data: any) => {
+        this.successMsg = AddressBookService.goodMsg;
+        console.log(AddressBookService.goodMsg + " @" + actionName);
+        return data;
+      })
       //...errors if any
-      .catch((error: any) => Observable.throw(error || 'Server error: Something went wrong, can not get the data'));
+      .catch((error: any) => {
+        this.errorMsg = AddressBookService.badMsg;
+        console.log(error || AddressBookService.badMsg);
+        return Observable.throw(AddressBookService.badMsg)
+      });
   }
 
   getAddress(id: number): Observable<Address>
   {
+    var token = this.cookieService.get("access_token");
     let headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
       .append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-      .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+      .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization')
+      .append('Access-Control-Allow-Credentials', 'true');
 
-    return this.http.get(this.baseAddressBookUrl +'GetAddressById/Id?Id=' +id, { headers })
-      .map((data: any) => data)
+    if (token != "undefined" && token != "" && token != null) {
+      headers = headers.append('Authorization', 'Bearer ' + token);
+    }
+
+    let actionName = "GetAddressById/Id?Id=";
+
+    return this.http.get(this.baseAddressBookUrl + actionName +id, { headers })
+      .map((data: any) => {
+        this.successMsg = AddressBookService.goodMsg;
+        console.log(AddressBookService.goodMsg + " @" + actionName);
+        return data;
+      })
       //...errors if any
-      .catch((error: any) => Observable.throw(error || 'Server error: Something went wrong, can not get the data'));
+      .catch((error: any) => {
+        this.errorMsg = AddressBookService.badMsg;
+        console.log(error || AddressBookService.badMsg);
+        return Observable.throw(error || AddressBookService.badMsg);
+      });
+  }
+
+  getErrorMsg() {
+    return this.errorMsg;
+  }
+
+  getSuccessMsge() {
+    return this.successMsg;
   }
 }

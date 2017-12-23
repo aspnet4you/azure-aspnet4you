@@ -1,0 +1,30 @@
+<p>
+ This is a demo of oAuth Login with 3rd Party Identity Provider (IdP), LinkedIn in this case. Security and privacy is paramount important to you (and "US") and you are in complete control
+  of authorization. Most importanly, you NEVER give your user/password to anyone other than the Identity Provider (i.e. LinkedIn) as you will see in this demo. I am using LinkedIn
+  for demo purpose but I would be using Custom Identity Provider (implementation of Ping Federate) at the enterprise environment. The oAuth flow (Authorization Code) that is used here is unique
+  and you may not find elsewhere on the internet. The actual authentication/authorization flow starts at the server-side and Angular has NO information about oauth2 clientid and/or client secrete!
+  Like this pattern? Follow me on LinkedIn.
+</p>
+<div *ngIf="_jwtToken; then logoutLinkedIn; else loginLinkedIn">ignored here</div>
+<ng-template #loginLinkedIn>
+    <p>{{getSuccessMsge()}}</p>
+    <br />
+    <button (click)="oauthPopUp()"><img src="../assets/images/Sign-in-Small---Active.png" /></button>
+</ng-template>
+<ng-template #logoutLinkedIn>
+  <!--<br />-->
+  <!--<button (click)="decodeToken()">Decode Token</button>-->
+  <h4 *ngIf="_jwtToken">Jwt Token for {{_jwtToken.givenname}} {{_jwtToken.surname}}:</h4>
+  <ul *ngIf="_jwtToken">
+    <li>givenname: {{_jwtToken.givenname}}</li>
+    <li>surname: {{_jwtToken.surname}}</li>
+    <li>iss: {{_jwtToken.iss}}</li>
+    <li>emailaddress: {{_jwtToken.emailaddress}}</li>
+    <li>expiration: {{_jwtToken.expiration}}</li>
+    <li>exp: {{_jwtToken.exp}}</li>
+    <li>aud: {{_jwtToken.aud}}</li>
+    <li>accesstoken: Look your oAuth token in brower console! Try it! https://api.linkedin.com/v1/people/~?oauth2_access_token=[token goes here]</li>
+  </ul>
+  <br />
+  <button (click)="logout()">Logout</button>
+</ng-template>
