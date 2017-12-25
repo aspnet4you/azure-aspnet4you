@@ -94,6 +94,7 @@
     <Content Include="tsconfig.json" />
     <Content Include="tslint.json" />
     <Content Include="src\Web.config" />
+    <Content Include="src\assets\SSLServerTest-aspnet4you.pdf" />
     <None Include="src\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,7 +109,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\wordpressfeed.ts" />
     <TypeScriptCompile Include="src\app\address-book-protected.component.ts" />
+    <TypeScriptCompile Include="src\app\app-blogs.service.ts" />
     <TypeScriptCompile Include="src\app\oauth-login.service.ts" />
     <TypeScriptCompile Include="src\app\jwt-token.ts" />
     <TypeScriptCompile Include="src\app\address-book.component.ts" />

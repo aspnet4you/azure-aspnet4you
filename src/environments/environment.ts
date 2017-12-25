@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   apiDomain: "http://api-local.aspnet4you.com",
   returnUrl: "http://localhost:4200/oauth",
+  wordPressBaseUrl : "http://blogs.aspnet4you.com",
   cookieDomain: "localhost",
   secureCookie: false
 };

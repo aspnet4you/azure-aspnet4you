@@ -23,7 +23,7 @@ export class OauthLoginService {
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
 
-  private baseAddressBookUrl = environment.apiDomain +'/Account/SignOff';
+  private signOffUrl = environment.apiDomain +'/Account/SignOff';
 
   signOut() {
     // set the headers required to pass CORS. Don't forget to add the origins at the api (server)!
@@ -38,7 +38,7 @@ export class OauthLoginService {
     }
 
     
-    this.http.post(this.baseAddressBookUrl, { headers:headers, withCredentials: true })
+    this.http.post(this.signOffUrl, { headers:headers, withCredentials: true })
       .subscribe(
       () => { }
       , (error: any) => {

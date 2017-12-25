@@ -1,9 +1,12 @@
 <p>
-  blogs.aspnet4you.com:
-  <br />
   Anything you do must be supported by documentations. You will forget things even if you are an intelligent mind! This is a WordPress site that I ported from my other hosting provider.
   Feel free to visit my blogs at <a href="//blogs.aspnet4you.com" target="_blank">blogs.aspnet4you.com</a>.
 </p>
-<p>
-  <a href="//blogs.aspnet4you.com" target="_blank"><img style="width: 90%" src="../assets/images/blogs-aspnet4you.PNG" /></a>
-</p>
+<div *ngIf="wordPressFeeds">
+  <h2>Read Recent Posts from Blogs:</h2>
+  <ul>
+    <li *ngFor="let item of wordPressFeeds; let i = index">
+      <a href={{item.link}} target="_blank">{{item.title.rendered}}</a>
+    </li>
+  </ul>
+</div>

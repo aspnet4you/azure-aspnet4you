@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { OauthLoginComponent } from './oauth-login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { OauthLoginService } from './oauth-login.service';
+import { WordPressFeedService } from './app-blogs.service';
 
 @NgModule({
   imports: [
@@ -33,8 +34,8 @@ import { OauthLoginService } from './oauth-login.service';
   providers: [
     AddressBookService,
     CookieService,
-    OauthLoginService
-            
+    OauthLoginService,
+    WordPressFeedService        
   ],
   bootstrap: [ AppComponent ]
 })
