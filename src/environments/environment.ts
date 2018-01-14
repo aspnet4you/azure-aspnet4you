@@ -9,5 +9,7 @@ export const environment = {
   returnUrl: "http://localhost:4200/oauth",
   wordPressBaseUrl : "http://blogs.aspnet4you.com",
   cookieDomain: "localhost",
-  secureCookie: false
+  secureCookie: false,
+  stockQuoteUrl: "https://afa-aspnet4you.azurewebsites.net/stock/",
+  stockSymbolsUrl:"https://afa-aspnet4you.azurewebsites.net/api/GetStockSymbols/?code=qticWQLtrAgiEGZjku/VTv1Qj/lspKqm6oM147XkkPS6mvB49paXww=="
 };

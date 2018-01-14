@@ -10,6 +10,13 @@ h2, h3 {
   font-weight: lighter;
 }
 
+p.special-1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 125%;
+}
+
 p {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;

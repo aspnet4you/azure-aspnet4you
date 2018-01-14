@@ -1,0 +1,16 @@
+<div [@dialog] *ngIf="visible" class="dialog">
+  <ng-content>
+    
+  </ng-content>
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+  <div *ngIf="myStockSymbols !=null" style="width:auto; height: 400px;overflow:auto">
+    <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search to type">
+    <ul>
+      <li   style="cursor: pointer;" *ngFor="let smbl of myStockSymbols | FilterPipe: queryString : searchableList" (click)="onSelectedSymbol(smbl.symbol)">
+        {{smbl.name}} ({{smbl.symbol}})
+      </li>
+    </ul>
+  </div>
+  <br />
+  <button (click)="close()" style="float: right; background-color:coral; color: white">Close</button>
+</div>

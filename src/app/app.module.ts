@@ -14,13 +14,19 @@ import { OauthLoginComponent } from './oauth-login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { OauthLoginService } from './oauth-login.service';
 import { WordPressFeedService } from './app-blogs.service';
+import { StockQuotesComponent } from './app-sq.component';
+import { StockQuotesService } from './app-sq.service';
+import { DialogComponent } from './app-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './filter.pipe'
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule 
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -29,13 +35,17 @@ import { WordPressFeedService } from './app-blogs.service';
     AppHomeComponent,
     AppApiComponent,
     AppBlogsComponent,
-    OauthLoginComponent
+    OauthLoginComponent,
+    StockQuotesComponent,
+    DialogComponent,
+    FilterPipe
   ],
   providers: [
     AddressBookService,
     CookieService,
     OauthLoginService,
-    WordPressFeedService        
+    WordPressFeedService,
+    StockQuotesService
   ],
   bootstrap: [ AppComponent ]
 })

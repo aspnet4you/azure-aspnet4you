@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
                 <a routerLink="/api" routerLinkActive="active">Api</a>
                 <a routerLink="/blogs" routerLinkActive="active">Blogs</a>
                 <a routerLink="/oauth" routerLinkActive="active">oAuth</a>
+                <a routerLink="/quotes" routerLinkActive="active">StockQ</a>
               </nav>
             <router-outlet>
              

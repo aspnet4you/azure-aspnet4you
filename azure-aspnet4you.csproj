@@ -63,6 +63,9 @@
   <ItemGroup>
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
+    <Content Include="src\app\app-dialog.component.css" />
+    <Content Include="src\app\app-dialog.component.html" />
+    <Content Include="src\app\app-sq.component.html" />
     <Content Include="src\app\oauth-login.component.html" />
     <Content Include="src\app\app-home.component.html" />
     <Content Include="src\app\app-blogs.component.html" />
@@ -109,6 +112,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\app-dialog.component.ts" />
+    <TypeScriptCompile Include="src\app\app-sq.service.ts" />
+    <TypeScriptCompile Include="src\app\app-sq.component.ts" />
+    <TypeScriptCompile Include="src\app\filter.pipe.ts" />
+    <TypeScriptCompile Include="src\app\stockquotes.ts" />
+    <TypeScriptCompile Include="src\app\StockSymbols.ts" />
     <TypeScriptCompile Include="src\app\wordpressfeed.ts" />
     <TypeScriptCompile Include="src\app\address-book-protected.component.ts" />
     <TypeScriptCompile Include="src\app\app-blogs.service.ts" />

@@ -1,0 +1,102 @@
+<p>
+Let's have a live demo of Azure Function App! In this demo, I am going to display stock quotes from a web service (an Azure Function Proxy App). No application to deploy. Yes, you heard it right!
+I created a proxy function to pull stock quotes from iextrading.com and it is exposed as API.
+</p>
+<br />
+<p class="p.special-1">
+  Enter Stock Symbol(<a (click)="showDialog = !showDialog" style="cursor: pointer; color:coral">lookup</a>):<br />
+</p>
+
+<input type='text' width="10" [(ngModel)]="defaultSymbol" #symbolName />
+<button (click)="getStockQuotes(symbolName.value)">Get Quotes</button>
+<app-dialog [(visible)]="showDialog" (messageEvent)="receiveMessage($event)">
+  <p class="p.special-1">Search and Select Company</p>
+</app-dialog>
+
+<div *ngIf="myStockQuotes">
+  <p>{{myStockQuotes.companyName}} ({{myStockQuotes.symbol}})</p>
+  <table *ngIf="myStockQuotes">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>symbol</td>
+        <td>{{myStockQuotes.symbol}}</td>
+      </tr>
+      <tr>
+        <td>companyName</td>
+        <td>{{myStockQuotes.companyName}}</td>
+      </tr>
+      <tr>
+        <td>sector</td>
+        <td>{{myStockQuotes.sector}}</td>
+      </tr>
+      <tr>
+        <td>latestPrice</td>
+        <td>{{myStockQuotes.latestPrice | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+
+      <tr>
+        <td>latestTime</td>
+        <td>{{myStockQuotes.latestTime | date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+      </tr>
+      <tr>
+        <td>latestUpdate</td>
+        <td>{{myStockQuotes.latestUpdate | date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+      </tr>
+      <tr>
+        <td>open</td>
+        <td>{{myStockQuotes.open | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>openTime</td>
+        <td>{{myStockQuotes.openTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>{{myStockQuotes.close | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>closeTime</td>
+        <td>{{myStockQuotes.closeTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+      </tr>
+      <tr>
+        <td>high</td>
+        <td>{{myStockQuotes.high | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>low</td>
+        <td>{{myStockQuotes.low | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>week52High</td>
+        <td>{{myStockQuotes.week52High | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>week52Low</td>
+        <td>{{myStockQuotes.week52Low | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+
+      <tr>
+        <td>marketCap</td>
+        <td>{{myStockQuotes.marketCap | currency:'USD':'symbol':'1.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>peRatio</td>
+        <td>{{myStockQuotes.peRatio}}</td>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>{{myStockQuotes.change}}</td>
+      </tr>
+      <tr>
+        <td>changePercent</td>
+        <td>{{myStockQuotes.changePercent}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
