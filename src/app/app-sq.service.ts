@@ -18,9 +18,9 @@ export class StockQuotesService {
   private static goodMsg: string = "Successfully received quotes.";
   private static badMsg: string = "Server error: Something went wrong, can not get the data. Look at the console for details."; 
 
-
   // Resolve HTTP using the constructor
   constructor(private http: HttpClient) {
+   
   }
 
   private sqUrl = environment.stockQuoteUrl;
@@ -33,7 +33,9 @@ export class StockQuotesService {
       .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization')
       .append('Access-Control-Allow-Credentials', 'true');
 
-    return this.http.get(this.sqUrl + sqsymbol, { headers })
+    let quoteUrl = this.sqUrl.replace("{symbol}", sqsymbol);
+
+    return this.http.get(quoteUrl, { headers })
       .map((data: any) => {
         this.successMsg = StockQuotesService.goodMsg;
         console.log(StockQuotesService.goodMsg);
@@ -60,16 +62,25 @@ export class StockQuotesService {
       .append('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization')
       .append('Access-Control-Allow-Credentials', 'true');
 
+    if (localStorage.getItem('stockSymbols') != null) {
+      console.log("stockSymbols received from cache");
+      return Observable.of(JSON.parse(localStorage.getItem("stockSymbols")));
+    }
+
     return this.http.get(this.sqStockSymbolsUrl, { headers })
       .map((data: any) => {
         this.successMsg = StockQuotesService.goodMsg;
         console.log(StockQuotesService.goodMsg);
         let stockSymbols: StockSymbols[] = data;
 
+        if (stockSymbols != null) {
+          localStorage.setItem('stockSymbols', JSON.stringify(stockSymbols));
+        }
+
         //for (let symbol of stockSymbols) {
         //  console.log(symbol.symbol);
         //}
-       
+        console.log("stockSymbols received from api");
         return stockSymbols;
       })
       //...errors if any

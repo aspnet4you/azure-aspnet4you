@@ -1,10 +1,12 @@
-<p>
-Let's have a live demo of Azure Function App! In this demo, I am going to display stock quotes from a web service (an Azure Function Proxy App). No application to deploy. Yes, you heard it right!
-I created a proxy function to pull stock quotes from iextrading.com and it is exposed as API.
+<p class="special-1">
+  Stock Quote (StockQ) is a live demo of Azure Functions. We are going to display quotes received from Azure Function.
+  It’s likely that you don’t know all the symbols and we are going to demo lookup feature. Lookup calls another Azure Function to get all the symbols.
+  In addition, we are going to see some Angular cool features like custom FilterPipe, EventEmitter, etc. Lookup would allow you to filter the list and let you pick a symbol.
+  As you pick symbol from the list, the child (dialog) component sends message to parent component and fill the symbol for you! Behind the scene Azure Functions are using data provided
+  by 3rd party (thanks to iextrading.com for providing free but real-time service). Enjoy the live demo!
 </p>
-<br />
-<p class="p.special-1">
-  Enter Stock Symbol(<a (click)="showDialog = !showDialog" style="cursor: pointer; color:coral">lookup</a>):<br />
+<p class="special-1">
+  Enter Stock Symbol(<a (click)="showDialog = !showDialog" style="cursor: pointer; color:coral">lookup</a>):
 </p>
 
 <input type='text' width="10" [(ngModel)]="defaultSymbol" #symbolName />
