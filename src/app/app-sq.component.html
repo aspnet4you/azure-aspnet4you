@@ -11,8 +11,8 @@
 
 <input type='text' width="10" [(ngModel)]="defaultSymbol" #symbolName />
 <button (click)="getStockQuotes(symbolName.value)">Get Quotes</button>
-<app-dialog [(visible)]="showDialog" (messageEvent)="receiveMessage($event)">
-  <p class="p.special-1">Search and Select Company</p>
+<app-dialog [(visible)]="showDialog" (messageEvent)="receiveMessage($event)" (visibleChange)="visibleChange($event)">
+  <p class="special-1">Search and Select Company</p>
 </app-dialog>
 
 <div *ngIf="myStockQuotes">

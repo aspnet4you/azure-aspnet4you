@@ -18,6 +18,7 @@ export class StockQuotesComponent implements OnInit, OnDestroy{
 
   public myStockQuotes: StockQuotes = null;
   public defaultSymbol: string = "MSFT";
+  public showDialog: boolean = false;
 
   constructor(private sqService: StockQuotesService) {
 
@@ -50,6 +51,11 @@ export class StockQuotesComponent implements OnInit, OnDestroy{
   receiveMessage($event) {
     console.log("Symbol selected from dialog:" + $event);
     this.defaultSymbol = $event;
+  }
+
+  visibleChange($event) {
+    console.log("visibleChange from dialog:" + $event);
+    this.showDialog = $event;
   }
 
   getErrorMsg() {
