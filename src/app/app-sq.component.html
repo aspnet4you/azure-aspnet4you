@@ -35,69 +35,69 @@
       </tr>
       <tr>
         <td>sector</td>
-        <td>{{myStockQuotes.sector}}</td>
+        <td *ngIf="myStockQuotes.sector">{{myStockQuotes.sector}}</td>
       </tr>
       <tr>
         <td>latestPrice</td>
-        <td>{{myStockQuotes.latestPrice | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.latestPrice">{{myStockQuotes.latestPrice | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
 
       <tr>
         <td>latestTime</td>
-        <td>{{myStockQuotes.latestTime | date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+        <td *ngIf="myStockQuotes.latestTime">{{myStockQuotes.latestTime}}</td>
       </tr>
       <tr>
         <td>latestUpdate</td>
-        <td>{{myStockQuotes.latestUpdate | date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+        <td *ngIf="myStockQuotes.latestUpdate">{{myStockQuotes.latestUpdate | date:'MM-dd-yyyy hh:mm:ss a'}}</td>
       </tr>
       <tr>
         <td>open</td>
-        <td>{{myStockQuotes.open | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.open">{{myStockQuotes.open | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>openTime</td>
-        <td>{{myStockQuotes.openTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+        <td *ngIf="myStockQuotes.openTime">{{myStockQuotes.openTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
       </tr>
       <tr>
         <td>close</td>
-        <td>{{myStockQuotes.close | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.close">{{myStockQuotes.close | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>closeTime</td>
-        <td>{{myStockQuotes.closeTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
+        <td *ngIf="myStockQuotes.closeTime">{{myStockQuotes.closeTime |date:'MM-dd-yyyy hh:mm:ss a'}}</td>
       </tr>
       <tr>
         <td>high</td>
-        <td>{{myStockQuotes.high | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.high">{{myStockQuotes.high | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>low</td>
-        <td>{{myStockQuotes.low | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.low">{{myStockQuotes.low | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>week52High</td>
-        <td>{{myStockQuotes.week52High | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.week52High">{{myStockQuotes.week52High | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>week52Low</td>
-        <td>{{myStockQuotes.week52Low | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.week52Low">{{myStockQuotes.week52Low | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
 
       <tr>
         <td>marketCap</td>
-        <td>{{myStockQuotes.marketCap | currency:'USD':'symbol':'1.2-2'}}</td>
+        <td *ngIf="myStockQuotes.marketCap">{{myStockQuotes.marketCap | currency:'USD':'symbol':'1.2-2'}}</td>
       </tr>
       <tr>
         <td>peRatio</td>
-        <td>{{myStockQuotes.peRatio}}</td>
+        <td *ngIf="myStockQuotes.peRatio">{{myStockQuotes.peRatio}}</td>
       </tr>
       <tr>
         <td>change</td>
-        <td>{{myStockQuotes.change}}</td>
+        <td *ngIf="myStockQuotes.change">{{myStockQuotes.change}}</td>
       </tr>
       <tr>
         <td>changePercent</td>
-        <td>{{myStockQuotes.changePercent}}</td>
+        <td *ngIf="myStockQuotes.changePercent">{{myStockQuotes.changePercent}}</td>
       </tr>
     </tbody>
   </table>
