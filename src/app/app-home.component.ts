@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsEventsService } from "./app-googleanalytics.service";
 
 @Component({
   selector: 'app-home',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppHomeComponent implements OnInit {
 
-  constructor() {
+  constructor(private gaEventsService: GoogleAnalyticsEventsService) {
 
   }
 
   ngOnInit(): void {
-    //nothing at this time
+    this.gaEventsService.emitEvent("Home", "ngOnInit", "You are at home component!", 1);
   }
 
 }

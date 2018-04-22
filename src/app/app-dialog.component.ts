@@ -3,7 +3,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StockQuotesService } from './app-sq.service';
 import { StockSymbols } from './StockSymbols';
-import { FilterPipe } from './filter.pipe'
+import { FilterPipe } from './filter.pipe';
+import { GoogleAnalyticsEventsService } from "./app-googleanalytics.service";
 
 @Component({
   selector: 'app-dialog',
@@ -35,17 +36,21 @@ export class DialogComponent implements OnInit {
   public selectedSymbol: string = null;
   @Output() messageEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private sqService: StockQuotesService) {
+  constructor(private sqService: StockQuotesService, private gaEventsService: GoogleAnalyticsEventsService) {
     this.searchableList = ['name', 'symbol']
   }
 
   ngOnInit() {
     this.sqService.getStockSymbols()
       .subscribe(
-      symbols => this.myStockSymbols = symbols, //Bind to view
+      symbols => {
+        this.myStockSymbols = symbols;
+        this.gaEventsService.emitEvent("StockSymbol", "Retrieve", "Symbols Count:" +this.myStockSymbols.length);
+      }, //Bind to view
       err => {
         // Log errors if any
         console.log(err);
+        this.gaEventsService.emitEvent("StockSymbol", "Error", err);
       });
   }
 
@@ -57,6 +62,8 @@ export class DialogComponent implements OnInit {
   onSelectedSymbol(symbol: string) {
     this.selectedSymbol = symbol;
     console.log("Symbol selected:" + symbol);
+    this.gaEventsService.emitEvent("StockSymbol", "Selected", symbol);
+
     this.messageEvent.emit(symbol);
   }
 

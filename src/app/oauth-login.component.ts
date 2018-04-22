@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { JwtAuthToken } from './jwt-token';
 import { environment } from '../environments/environment';
+import { GoogleAnalyticsEventsService } from "./app-googleanalytics.service";
+
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -24,7 +26,7 @@ export class OauthLoginComponent implements OnInit, OnDestroy{
   _jwtToken: JwtAuthToken;
   private loginUrl = environment.apiDomain + "/Account/Login?returnUrl=" +environment.returnUrl;
 
-  constructor(private activeRoute: ActivatedRoute, private cookies: CookieService, private oauthService: OauthLoginService) {
+  constructor(private activeRoute: ActivatedRoute, private cookies: CookieService, private oauthService: OauthLoginService, private gaEventsService: GoogleAnalyticsEventsService) {
     activeRoute.queryParams.subscribe((params: Params) => {
       this.access_token = params['access_token'];
       this.processToken(this.access_token);
@@ -78,6 +80,10 @@ export class OauthLoginComponent implements OnInit, OnDestroy{
       this.cookies.delete("access_token", null, environment.cookieDomain);
       this.access_token = null;
       this._jwtToken = null;
+      this.gaEventsService.emitEvent("oAuth", "logout", "SignOut Successful!");
+    }
+    else {
+      this.gaEventsService.emitEvent("oAuth", "logout", "SignOut Unsuccessful!");
     }
   }
 
@@ -109,6 +115,8 @@ export class OauthLoginComponent implements OnInit, OnDestroy{
 
       this._jwtToken = jwtToken;
       console.log(jwtToken);
+
+      this.gaEventsService.emitEvent("oAuth", "login", jwtToken.givenname + " " + jwtToken.surname);
     }
 
     return jwtToken;

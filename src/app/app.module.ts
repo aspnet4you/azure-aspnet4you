@@ -18,7 +18,8 @@ import { StockQuotesComponent } from './app-sq.component';
 import { StockQuotesService } from './app-sq.service';
 import { DialogComponent } from './app-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterPipe } from './filter.pipe'
+import { FilterPipe } from './filter.pipe';
+import { GoogleAnalyticsEventsService } from "./app-googleanalytics.service";
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { FilterPipe } from './filter.pipe'
     CookieService,
     OauthLoginService,
     WordPressFeedService,
-    StockQuotesService
+    StockQuotesService,
+    GoogleAnalyticsEventsService
   ],
   bootstrap: [ AppComponent ]
 })

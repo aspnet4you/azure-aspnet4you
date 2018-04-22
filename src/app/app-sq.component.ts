@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { StockQuotesService } from './app-sq.service';
 import { StockQuotes, StockQuotesProxy } from './stockquotes';
 import { DialogComponent } from './app-dialog.component';
+import { GoogleAnalyticsEventsService } from "./app-googleanalytics.service";
 
 @Component({
   selector: 'stock-quotes',
@@ -20,18 +21,12 @@ export class StockQuotesComponent implements OnInit, OnDestroy{
   public defaultSymbol: string = "MSFT";
   public showDialog: boolean = false;
 
-  constructor(private sqService: StockQuotesService) {
+  constructor(private sqService: StockQuotesService, private gaEventsService: GoogleAnalyticsEventsService) {
 
   }
 
   ngOnInit() {
-    this.sqService.getQuotes('MSFT')
-      .subscribe(
-      quotes => this.myStockQuotes = quotes, //Bind to view
-      err => {
-        // Log errors if any
-        console.log(err);
-      });
+    this.getStockQuotes('MSFT');
   }
 
   ngOnDestroy(): void {
@@ -41,10 +36,14 @@ export class StockQuotesComponent implements OnInit, OnDestroy{
   getStockQuotes(sqsymbol: string = 'MSFT') {
     this.sqService.getQuotes(sqsymbol)
       .subscribe(
-      quotes => this.myStockQuotes = quotes, //Bind to view
+      quotes => {
+        this.myStockQuotes = quotes;
+        this.gaEventsService.emitEvent("StockQ", "Retrieve", sqsymbol);
+      }, //Bind to view
       err => {
         // Log errors if any
         console.log(err);
+        this.gaEventsService.emitEvent("StockQ", "Error", err);
       });
   }
 
